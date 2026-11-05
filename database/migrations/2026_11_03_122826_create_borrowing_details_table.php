@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->unsignedInteger('quantity');
             $table->timestamps();
-            table->unique(['borrowing_id', 'book_id']);
+            $table->unique(['borrowing_id', 'book_id']);
         });
     }
 
