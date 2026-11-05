@@ -6,20 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->restrictOnDelete();
+
+            $table->foreignId('member_id')
+                ->constrained('members')
+                ->restrictOnDelete();
+
+            $table->date('borrowed_at');
+            $table->date('due_date');
+            $table->date('returned_at')->nullable();
+            $table->string('status')->default('borrowed');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('borrowings');
