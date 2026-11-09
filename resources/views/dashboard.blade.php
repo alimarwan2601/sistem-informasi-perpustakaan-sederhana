@@ -1,28 +1,71 @@
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Perpustakaan</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Dashboard Perpustakaan</h1>
+@section('title', 'Dashboard - Perpustakaan')
 
-    <p>
-        Selamat datang,
-        {{ auth()->user()->name }}!
-    </p>
+@section('header', 'Dashboard')
 
-    <p>
-        Role: {{ auth()->user()->role }}
-    </p>
+@section('content')
 
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
+    <div class="page-heading">
+        <h1>Selamat Datang, {{ auth()->user()->name }}!</h1>
 
-</body>
-</html>
+        <p>
+            Berikut adalah ringkasan informasi
+            Sistem Informasi Perpustakaan.
+        </p>
+    </div>
+
+    @if (session('success'))
+        <div style="
+            background: #dcfce7;
+            color: #166534;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        ">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <p>Jumlah Judul Buku</p>
+            <h2>{{ number_format($totalBooks) }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Total Stok Buku</p>
+            <h2>{{ number_format($totalStock) }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Jumlah Anggota</p>
+            <h2>{{ number_format($totalMembers) }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Peminjaman Aktif</p>
+            <h2>{{ number_format($activeBorrowings) }}</h2>
+        </div>
+
+    </div>
+
+    <div class="content-card">
+
+        <h3>Informasi Pengguna</h3>
+
+        <p>
+            Anda login sebagai
+            <strong>{{ ucfirst(auth()->user()->role) }}</strong>.
+        </p>
+
+        <p>
+            Silakan gunakan menu navigasi di sebelah kiri
+            untuk mengakses fitur perpustakaan.
+        </p>
+
+    </div>
+
+@endsection
