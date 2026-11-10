@@ -229,8 +229,8 @@
 
         <p class="menu-title">Data Perpustakaan</p>
 
-        <a href="#">Kategori Buku</a>
-        <a href="#">Data Buku</a>
+        <a href="{{ route('categories.index') }}">Kategori</a>
+        <a href="{{ route('books.index') }}">Data Buku</a>
         <a href="#">Data Anggota</a>
 
         <p class="menu-title">Transaksi</p>
