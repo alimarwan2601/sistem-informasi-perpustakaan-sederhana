@@ -31,10 +31,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('books', BookController::class);
 
+    Route::resource('members', MemberController::class);
+
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
 
-    Route::resource('members', MemberController::class);
 
     // Route pengujian role admin.
     Route::get('/admin-area', function () {
