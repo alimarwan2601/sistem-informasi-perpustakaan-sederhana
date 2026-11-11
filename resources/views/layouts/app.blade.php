@@ -231,7 +231,7 @@
 
         <a href="{{ route('categories.index') }}">Kategori</a>
         <a href="{{ route('books.index') }}">Data Buku</a>
-        <a href="#">Data Anggota</a>
+        <a href="{{ route('members.index') }}">Data Anggota</a>
 
         <p class="menu-title">Transaksi</p>
 

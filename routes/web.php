@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\MemberController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
+
+    Route::resource('members', MemberController::class);
 
     // Route pengujian role admin.
     Route::get('/admin-area', function () {
