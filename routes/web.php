@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\BorrowingController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -39,6 +40,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post( '/borrowings/{borrowing}/return', [BorrowingController::class, 'returnBook'])   
         ->name('borrowings.return');
+
+    // Khusus admin
+    Route::middleware('role:admin')->group(function () {
+    Route::resource('users', UserController::class)
+        ->except(['show']);
+    });
 
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
