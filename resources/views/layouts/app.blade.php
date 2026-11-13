@@ -235,8 +235,8 @@
 
         <p class="menu-title">Transaksi</p>
 
-        <a href="#">Peminjaman Buku</a>
-        <a href="#">Pengembalian Buku</a>
+        <a href="{{ route('borrowings.index') }}">Peminjaman Buku</a>
+        <a href="{{ route('borrowings.index') }}">Pengembalian Buku</a>
 
     </aside>
 
