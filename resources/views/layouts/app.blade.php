@@ -224,7 +224,7 @@
 
         @if (auth()->user()->role === 'admin')
             <p class="menu-title">Administrasi</p>
-            <a href="#">Manajemen Pengguna</a>
+            <a href="{{ route('users.index') }}">Manajemen Pengguna</a>
         @endif
 
         <p class="menu-title">Data Perpustakaan</p>
